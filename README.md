@@ -4,6 +4,6 @@
 mvn spring-boot:run
 ```
 
-`/api/greeting` — текст.
+`/api/greeting` - текст.
 
-`/api/numbers` — числа.
+`/api/numbers` - числа.
