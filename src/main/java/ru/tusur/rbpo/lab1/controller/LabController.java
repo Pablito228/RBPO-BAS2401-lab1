@@ -1,21 +1,26 @@
 package ru.tusur.rbpo.lab1.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/observatory")
 public class LabController {
-    @GetMapping("/greeting")
-    public Map<String, String> greeting() {
-        return Map.of("message", "Hello from RBPO lab");
+
+    @GetMapping("/description")
+    public String description() {
+        return "A reference API for Solar System observations.";
     }
 
-    @GetMapping("/numbers")
-    public int[] numbers() {
-        return new int[]{1, 2, 3, 4, 5};
+    @GetMapping("/planet-counts")
+    public PlanetCounts planetCounts() {
+        var rockyPlanets = List.of("Mercury", "Venus", "Earth", "Mars");
+        var giantPlanets = List.of("Jupiter", "Saturn", "Uranus", "Neptune");
+        return new PlanetCounts(rockyPlanets.size(), giantPlanets.size());
     }
+
+    public record PlanetCounts(int rocky, int giants) {}
 }
